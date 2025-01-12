@@ -12,9 +12,7 @@ export const usePagination = ({ data, itemsPerPage = 5 }) => {
   const handlePageChange = (page) => {
     setCurrentPage(page);
     setPageSize(itemsPerPage);
-
   };
-
 
   return {
     currentPage,
