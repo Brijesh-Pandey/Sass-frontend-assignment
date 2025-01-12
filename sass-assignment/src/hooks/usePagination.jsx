@@ -2,7 +2,6 @@ import { useState } from "react";
 
 export const usePagination = ({ data, itemsPerPage = 5 }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(itemsPerPage);
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -11,7 +10,6 @@ export const usePagination = ({ data, itemsPerPage = 5 }) => {
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
-    setPageSize(itemsPerPage);
   };
 
   return {
