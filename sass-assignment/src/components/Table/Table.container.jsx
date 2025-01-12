@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Table from "./Table";
 import { usePagination } from "../../hooks/usePagination";
-import Pagination from '../Pagination/Pagination';
-
-// TODO: Segregate the data fetching logic from the component
+import Pagination  from "../Pagination/Pagination";
 
 const API_URL = "https://raw.githubusercontent.com/saaslabsco/frontend-assignment/refs/heads/master/frontend-assignment.json";
 
@@ -11,6 +9,8 @@ const TableContainer = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const { currentPage, totalPages, currentData, handlePageChange } = usePagination({ data, itemsPerPage: 5 });
 
   useEffect(() => {
     fetchData();
@@ -28,11 +28,11 @@ const TableContainer = () => {
     }
   };
 
-  const { currentPage, totalPages, currentData, handlePageChange } = usePagination({ data, itemsPerPage: 5 });
 
   return (
     <div>
       <Table data={currentData} loading={loading} error={error} />
+
       {!loading && !error && data.length > 0 && (
         <Pagination
           currentPage={currentPage}

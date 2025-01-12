@@ -1,34 +1,35 @@
 import React from "react";
 import "./Table.css";
-
-// TODO: Add loader and error state as a separate component
+import Loader from "../Loader";
+import TableContent from "./TableContent";
 
 const Table = ({ data, loading, error }) => {
+  const renderContent = () => {
+    if (loading) {
+      return <Loader />;
+    }
+
+    if (error) {
+      return (
+        <div className="error-container" role="alert">
+          <h2>Something went wrong</h2>
+          <p>{error.message}</p>
+          <p>Please try again later</p>
+        </div>
+      );
+    }
+
+    if (!data || data.length === 0) {
+      return <p>No data available</p>;
+    }
+
+    return <TableContent data={data} />;
+  };
+
   return (
     <div>
       <h1>Sass Frontend Assignment</h1>
-      {loading && <p role="status">Loading...</p>}
-      {error && <p role="alert">Error: {error.message}</p>}
-      {data.length > 0 && (
-        <table role="grid">
-          <thead>
-            <tr role="row">
-              <th role="columnheader" scope="col">S.No.</th>
-              <th role="columnheader" scope="col">Percentage funded</th>
-              <th role="columnheader" scope="col">Amount pledged</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item, index) => (
-              <tr role="row" key={index}>
-                <td role="gridcell">{item["s.no"]}</td>
-                <td role="gridcell">{item["percentage.funded"]}</td>
-                <td role="gridcell">{item["amt.pledged"]}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+      {renderContent()}
     </div>
   );
 };
