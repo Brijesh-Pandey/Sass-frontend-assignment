@@ -7,23 +7,23 @@ const Table = ({ data, loading, error }) => {
   return (
     <div>
       <h1>Sass Frontend Assignment</h1>
-      {loading && <p>Loading...</p>}
-      {error && <p>Error: {error.message}</p>}
+      {loading && <p role="status">Loading...</p>}
+      {error && <p role="alert">Error: {error.message}</p>}
       {data.length > 0 && (
-        <table>
+        <table role="grid">
           <thead>
-            <tr>
-              <th>S.No.</th>
-              <th>Percentage funded</th>
-              <th>Amount pledged</th>
+            <tr role="row">
+              <th role="columnheader" scope="col">S.No.</th>
+              <th role="columnheader" scope="col">Percentage funded</th>
+              <th role="columnheader" scope="col">Amount pledged</th>
             </tr>
           </thead>
           <tbody>
             {data.map((item, index) => (
-              <tr key={index}>
-                <td>{item["s.no"]}</td>
-                <td>{item["percentage.funded"]}</td>
-                <td>{item["amt.pledged"]}</td>
+              <tr role="row" key={index}>
+                <td role="gridcell">{item["s.no"]}</td>
+                <td role="gridcell">{item["percentage.funded"]}</td>
+                <td role="gridcell">{item["amt.pledged"]}</td>
               </tr>
             ))}
           </tbody>
