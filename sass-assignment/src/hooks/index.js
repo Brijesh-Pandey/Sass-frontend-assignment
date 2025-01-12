@@ -1,3 +1,4 @@
 import { usePagination } from "./usePagination";
+import { useDataFetching } from "./useDataFetching";
 
-export { usePagination };
+export { usePagination, useDataFetching };
