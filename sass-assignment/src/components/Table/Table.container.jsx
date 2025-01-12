@@ -1,7 +1,6 @@
-
-
 import React, { useState, useEffect } from "react";
 import Table from "./Table";
+import { usePagination } from "../../hooks/usePagination";
 
 // TODO: Segregate the data fetching logic from the component
 
@@ -29,9 +28,11 @@ const TableContainer = () => {
     }
   };
 
+  const { currentPage, totalPages, currentData, setCurrentPage, handlePageChange } = usePagination({ data, itemsPerPage: 5 });
+
   return (
     <div>
-      <Table data={data} loading={loading} error={error} />
+      <Table data={currentData} loading={loading} error={error} />
     </div>
   );
 };
