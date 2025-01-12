@@ -2,6 +2,7 @@ import React from "react";
 import "./Table.css";
 import Loader from "../Loader";
 import TableContent from "./TableContent";
+import Error from "../Error/Error";
 
 const Table = ({ data, loading, error }) => {
   const renderContent = () => {
@@ -10,13 +11,7 @@ const Table = ({ data, loading, error }) => {
     }
 
     if (error) {
-      return (
-        <div className="error-container" role="alert">
-          <h2>Something went wrong</h2>
-          <p>{error.message}</p>
-          <p>Please try again later</p>
-        </div>
-      );
+      return <Error error={error} />;
     }
 
     if (!data || data.length === 0) {

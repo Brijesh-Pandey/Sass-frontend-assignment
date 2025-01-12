@@ -52,17 +52,3 @@ tr:hover {
   cursor: pointer;
   transition: background-color 400ms ease;
 }
-
-.error-container {
-  padding: 20px;
-  border: 1px solid #ff4444;
-  border-radius: 4px;
-  background-color: #fff5f5;
-  text-align: center;
-  margin: 20px 0;
-}
-
-.error-container h2 {
-  color: #ff4444;
-  margin-bottom: 10px;
-}
